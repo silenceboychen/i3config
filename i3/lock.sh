@@ -1,0 +1,1 @@
+xautolock -time 1 -locker 'scrot /tmp/lockscreen.png && mogrify -scale 50% -gaussian-blur 0x4 -gamma 0.8 -scale 200% /tmp/lockscreen.png && i3lock -i /tmp/lockscreen.png' -notify 10 -notifier 'notify-send "锁屏提示:" "还有10秒钟我就要自动锁屏了!" -i /tmp/lockscreen.png'
