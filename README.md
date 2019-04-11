@@ -50,3 +50,82 @@ bindsym --release $mod+Shift+Print exec "scrot -s -b -m /tmp/screenshot.png && x
 # QQ 风格的截屏快捷键
 bindsym --release Control+Mod1+A exec "scrot -s -b -m /tmp/screenshot.png && xclip -selection clipoard -t 'image/png' /tmp/screenshot.png"
 ```
+
+### linux双屏幕设置
+
+![](xrandr.jpg)
+
+我的设置为：
+```
+exec xrandr --output HDMI-1 --primary --pos 0x0 --output DVI-D-1 --rotate left --right-of HDMI-1 --auto
+```
+
+**关于xrandr的设置**
+
+  * 执行xrandr命令
+    
+    ```
+    ➜  ~ xrandr
+    Screen 0: minimum 320 x 200, current 3120 x 1920, maximum 16384 x 16384
+    DVI-D-1 connected 1200x1920+1920+0 left (normal left inverted right x axis y axis) 518mm x 324mm
+       1920x1200     59.95*+
+       1920x1080     60.00  
+       1600x1200     60.00  
+       1680x1050     59.88  
+       1280x1024     60.02  
+       1280x960      60.00  
+       1024x768      60.00  
+       800x600       60.32  
+       640x480       59.94  
+       720x400       70.08  
+    HDMI-1 connected primary 1920x1080+0+0 (normal left inverted right x axis y axis) 527mm x 296mm
+       1920x1080     60.00*+  50.00    59.94  
+       1920x1080i    60.00    50.00    59.94  
+       1600x1200     60.00  
+       1600x900      60.00  
+       1280x1024     75.02    60.02  
+       1152x864      75.00  
+       1280x720      60.00    50.00    59.94  
+       1024x768      75.03    60.00  
+       800x600       75.00    60.32  
+       720x576       50.00  
+       720x480       60.00    59.94  
+       640x480       75.00    60.00    59.94  
+       720x400       70.08  
+    VGA-1 disconnected (normal left inverted right x axis y axis)
+    ```
+
+    运行之后会显示当前连接设备的屏幕信息，我的屏幕当前连接了DVI-D-1和HDMI-1，而VGA-1屏幕为disconnect，意为没有连接.
+
+  * 设置双屏幕显示
+  
+    * 打开外接显示器，双屏幕显示相同的内容--克隆，（auto为最高分辨率）
+    ```
+    xrandr --output HDMI-1 --same-as DVI-D-1 --auto
+    ```
+    * 若要指定外接显示器的分辨率可以使用下面的命令（1280*1024）：
+    ```
+    xrandr --output HDMI-1 --same-as DVI-D-1 --mode 1280x1024
+    ```
+    * 打开外接显示器，设置为右侧扩展
+    ```
+    xrandr --output HDMI-1 --right-of DVI-D-1 --auto
+    ```
+    * 关闭显示器
+    ```
+    xrandr --output DVI-D-1 --off
+    ```
+    * 打开HDMI-1接口显示器，关闭DVI-D-1接口显示器
+    ```
+    xrandr --output HDMI-1 --auto --output DVI-D-1 --off
+    ```
+    * 设置主屏幕
+    ```
+    xrandr --output HDMI-0 --primary
+    ```
+
+### 背景图设置
+
+```
+exec --no-startup-id feh --bg-scale "/home/desktop.jpg"
+```
