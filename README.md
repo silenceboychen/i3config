@@ -129,3 +129,5 @@ exec xrandr --output HDMI-1 --primary --pos 0x0 --output DVI-D-1 --rotate left -
 ```
 exec --no-startup-id feh --bg-scale "/home/desktop.jpg"
 ```
+
+附带我心爱的桌面图片。
