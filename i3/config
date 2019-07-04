@@ -144,7 +144,8 @@ bindsym --release $mod+Print exec "scrot -u -b -m /tmp/screenshot.png && xclip -
 bindsym --release $mod+Shift+Print exec "scrot -s -b -m /tmp/screenshot.png && xclip -selection clipoard -t 'image/png' /tmp/screenshot.png"
 # QQ 风格的截屏快捷键
 bindsym --release Control+Mod1+A exec "scrot -s -b -m /tmp/screenshot.png && xclip -selection clipoard -t 'image/png' /tmp/screenshot.png"
-
+# flameshot强大的截图工具
+bindsym Control+$mod+a exec "/usr/bin/flameshot gui"
 
 
 # resize window (you can also use the mouse for that)
